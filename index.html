@@ -1,0 +1,36 @@
+<html>
+<head>
+<meta http-equiv="Content-type" content="text/html;charset=UTF-8">
+<title>PKMNGOTS Image Watermarker</title>
+<style type='text/css'>
+    body {
+        font-family: sans-serif;
+    }
+    #download {
+	    cursor:pointer;
+	}
+    #hidden {
+        display: none;
+    }
+</style>
+</head>
+<body>
+    <form action='#' onsubmit="return false;">
+        <input type='file' id='imgfile' accept="image/*" onchange="loadImage()" />
+    </form>
+    <canvas width="500" height="500" id="canvas"></canvas>
+    <br>
+    <a id="download">Download as image</a>
+    
+    <canvas id="hidden"></canvas>
+
+    <script src="assets/js/imageWatermark.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/webfont/1.6.26/webfont.js"></script>
+    <script>
+    WebFont.load({
+        google: {
+        families: ['Inconsolata']
+        }
+    });
+    </script>
+</body>
