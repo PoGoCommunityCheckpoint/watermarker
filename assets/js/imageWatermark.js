@@ -16,20 +16,17 @@ function loadImage () { // eslint-disable-line no-unused-vars
   } else if (!input.files) {
     alert('This browser doesn\'t seem to support the `files` property of file inputs.')
   } else if (!input.files[0]) {
-    alert('Please select a file before clicking \'Load\'')
   } else {
     file = input.files[0]
     fr = new FileReader()
     fr.onload = createImage
     fr.readAsDataURL(file)
-    console.log(file)
   }
 
   function createImage () {
     img = new Image()
     img.onload = imageLoaded
     img.src = fr.result
-    console.log(fr)
   }
 
   function imageLoaded () {
@@ -44,7 +41,7 @@ function loadImage () { // eslint-disable-line no-unused-vars
     ctx.font = `bold ${Math.min(canvas.width / img.width * img.height, 500) / 25}px Inconsolata`
     ctx.globalCompositeOperation = 'difference'
     ctx.fillStyle = 'rgba(255, 255, 255, .70)'
-    ctx.fillText('PKMNGOTS', Math.min(canvas.width / img.width * img.height, 500) / 100, Math.min(canvas.width / img.width * img.height, 500) / 25)
+    ctx.fillText((document.getElementById('text').value === '') ? 'PKMNGOTS' : document.getElementById('text').value, Math.min(canvas.width / img.width * img.height, 500) / 100, Math.min(canvas.width / img.width * img.height, 500) / 25)
     let hidden = document.getElementById('hidden')
     hidden.width = img.width
     hidden.height = img.height
@@ -59,6 +56,11 @@ function loadImage () { // eslint-disable-line no-unused-vars
     })
   }
 }
+
+document.getElementById('text').addEventListener('input', () => {
+  loadImage()
+})
+
 function downloadCanvas (link, canvasId, filename) {
   link.href = URL.createObjectURL(canvasBlob)
   link.download = filename

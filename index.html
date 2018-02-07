@@ -12,15 +12,24 @@
     #hidden {
         display: none;
     }
+    #imgfile {
+        display: none;
+    }
+    .upload-button {
+        cursor: pointer;
+    }
 </style>
 </head>
 <body>
     <form action='#' onsubmit="return false;">
+        <label for="imgfile" class="upload-button">Upload</label>
         <input type='file' id='imgfile' accept="image/*" onchange="loadImage()" />
+        <input type="text" id="text" placeholder="PKMNGOTS">
+        <a id="download">Download as image</a>
     </form>
+    <br>
     <canvas width="500" height="500" id="canvas"></canvas>
     <br>
-    <a id="download">Download as image</a>
     
     <canvas id="hidden"></canvas>
 
